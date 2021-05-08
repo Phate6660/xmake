@@ -119,6 +119,7 @@ end
 -- the init function for main
 function main._init()
 
+    print("main._init", os.curdir())
     -- disable scheduler first
     scheduler:enable(false)
 
@@ -141,6 +142,7 @@ function main._init()
         end
         xmake._PROJECT_DIR = projectdir
         assert(projectdir)
+        print("main projectdir", projectdir)
 
         -- init the xmake.lua file path
         local projectfile = opt_projectfile or xmake._PROJECT_FILE
@@ -154,6 +156,8 @@ function main._init()
         if not os.isfile(projectfile) or (not opt_projectdir and not opt_projectfile) then
             projectfile = main._find_root(projectfile)
         end
+
+        print("main projectfile", projectfile)
 
         -- update and enter project
         xmake._PROJECT_DIR  = path.directory(projectfile)

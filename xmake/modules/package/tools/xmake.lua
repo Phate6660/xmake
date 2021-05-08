@@ -197,6 +197,7 @@ function install(package, configs, opt)
     envs.XMAKE_PROFILE="trace"
 ]]
     print("lock path: %s", project.filelock():path())
+    print("projectfile", os.projectfile())
     -- do configure
     os.execv("xmake", argv, {envs = envs})
 

@@ -132,6 +132,7 @@ end
 
 -- lock the whole project
 function sandbox_core_project.lock(opt)
+    print("projectfile", os.projectfile())
     print("lock ..", sandbox_core_project.filelock():path())
     io.flush()
     if sandbox_core_project.trylock(opt) then
