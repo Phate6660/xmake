@@ -162,6 +162,7 @@ end
 -- install package
 function install(package, configs, opt)
 
+    print("install1", os.curdir())
     -- pass local repositories
     opt = opt or {}
     for _, repo in ipairs(repository.repositories()) do
@@ -171,6 +172,7 @@ function install(package, configs, opt)
         os.vrunv("xmake", repo_argv)
     end
 
+    print("install2", os.curdir())
     -- pass configurations
     local argv = {"f", "-y", "-c"}
     _set_builtin_argv(argv)
@@ -185,17 +187,20 @@ function install(package, configs, opt)
         end
     end
 
+    print("install3", os.curdir())
     -- get build environments
     local envs = opt.envs or buildenvs(package)
 
     -- do configure
     os.vrunv("xmake", argv, {envs = envs})
 
+    print("install4", os.curdir())
     -- do build
     argv = {}
     _set_builtin_argv(argv)
     os.vrunv("xmake", argv, {envs = envs})
 
+    print("install5", os.curdir())
     -- do install
     argv = {"install", "-y", "-o", package:installdir()}
     _set_builtin_argv(argv)
