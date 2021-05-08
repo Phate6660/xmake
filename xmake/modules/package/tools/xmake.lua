@@ -188,6 +188,8 @@ function install(package, configs, opt)
     end
 
     print("install3", os.curdir())
+        print("lock path: %s", project.filelock():path())
+
     -- get build environments
     local envs = opt.envs or buildenvs(package)
 
