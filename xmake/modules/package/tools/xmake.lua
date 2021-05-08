@@ -97,6 +97,8 @@ end
 
 -- set some builtin global options from the parent xmake
 function _set_builtin_argv(argv)
+    table.insert(argv, "-P")
+    table.insert(argv, os.curdir())
     for _, name in ipairs({"diagnosis", "verbose", "quiet", "yes", "confirm", "root"}) do
         local value = option.get(name)
         if type(value) == "boolean" then
