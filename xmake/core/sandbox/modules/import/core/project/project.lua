@@ -132,13 +132,14 @@ end
 
 -- lock the whole project
 function sandbox_core_project.lock(opt)
+    print("lock ..", sandbox_core_project.filelock():path())
     if sandbox_core_project.trylock(opt) then
         print("lock ok", sandbox_core_project.filelock():path())
         return true
     elseif baseoption.get("diagnosis") then
         utils.cprint("${color.warning}the current project is being accessed by other processes, please waiting!")
     end
-    print("lock ..", sandbox_core_project.filelock():path())
+    print("lock ..2", sandbox_core_project.filelock():path())
     local ok, errors = sandbox_core_project.filelock():lock(opt)
     if not ok then
         raise(errors)
@@ -148,6 +149,7 @@ end
 
 -- trylock the whole project
 function sandbox_core_project.trylock(opt)
+    print("trylock ..", sandbox_core_project.filelock():path())
     return sandbox_core_project.filelock():trylock(opt)
 end
 

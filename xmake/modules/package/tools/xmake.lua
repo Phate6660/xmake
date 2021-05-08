@@ -193,11 +193,12 @@ function install(package, configs, opt)
     -- get build environments
     local envs = opt.envs or buildenvs(package)
 
+    --[[
     envs = envs or {}
     envs.XMAKE_PROFILE="trace"
-
+]]
     -- do configure
-    os.vrunv("xmake", argv, {envs = envs})
+    os.execv("xmake", argv, {envs = envs})
 
     print("install4", os.curdir())
     -- do build
