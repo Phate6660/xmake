@@ -188,7 +188,6 @@ function install(package, configs, opt)
     end
 
     print("install3", os.curdir())
-        print("lock path: %s", project.filelock():path())
 
     -- get build environments
     local envs = opt.envs or buildenvs(package)
@@ -197,6 +196,7 @@ function install(package, configs, opt)
     envs = envs or {}
     envs.XMAKE_PROFILE="trace"
 ]]
+    print("lock path: %s", project.filelock():path())
     -- do configure
     os.execv("xmake", argv, {envs = envs})
 

@@ -201,6 +201,7 @@ end
 
 -- the main entry function
 function main.entry()
+    print("main.entry")
 
     -- init
     local ok, errors = main._init()

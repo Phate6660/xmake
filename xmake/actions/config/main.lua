@@ -197,6 +197,7 @@ end
 -- main entry
 function main(opt)
 
+    print("config.main")
     -- avoid to run this task repeatly
     opt = opt or {}
     if _g.configured then return end
@@ -222,6 +223,8 @@ force to build in current directory via run `xmake -P .`]], os.projectdir())
         end
     end
 
+    print("project.lock")
+    io.flush()
     -- lock the whole project
     project.lock()
 

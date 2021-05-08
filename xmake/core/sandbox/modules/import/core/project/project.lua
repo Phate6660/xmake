@@ -133,6 +133,7 @@ end
 -- lock the whole project
 function sandbox_core_project.lock(opt)
     print("lock ..", sandbox_core_project.filelock():path())
+    io.flush()
     if sandbox_core_project.trylock(opt) then
         print("lock ok", sandbox_core_project.filelock():path())
         return true
@@ -150,6 +151,7 @@ end
 -- trylock the whole project
 function sandbox_core_project.trylock(opt)
     print("trylock ..", sandbox_core_project.filelock():path())
+    io.flush()
     return sandbox_core_project.filelock():trylock(opt)
 end
 
